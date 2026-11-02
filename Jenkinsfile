@@ -119,8 +119,13 @@ pipeline {
                     } else {
                         bat """
                             docker run -d --name temp_smoke_test -p 5001:5000 ${DOCKER_IMAGE}:${IMAGE_TAG}
-                            timeout /t 4 /nobreak
-                            curl -f http://localhost:5001/health
+                            ping -n 11 127.0.0.1 >NUL
+                            curl.exe -f http://127.0.0.1:5001/health
+                            if errorlevel 1 (
+                                docker logs temp_smoke_test
+                                docker rm -f temp_smoke_test
+                                exit /b 1
+                            )
                             docker stop temp_smoke_test
                             docker rm temp_smoke_test
                         """
