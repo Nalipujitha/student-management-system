@@ -1,0 +1,27 @@
+# Version control
+.git
+.gitignore
+
+# Python caches & virtual environments
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Testing & Coverage reports
+.pytest_cache/
+reports/
+test-results.xml
+.coverage
+htmlcov/
+
+# IDE files
+.vscode/
+.idea/
+
+# Local data & logs
+*.log
